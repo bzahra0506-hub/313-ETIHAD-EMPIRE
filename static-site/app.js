@@ -50,7 +50,7 @@ const rateRows = [
     [782.60,558.25,null,null],
 ];
 
-export function monthlyPremium(age, gender, term) {
+function monthlyPremium(age, gender, term) {
     if (String(age).trim() === '' || !Number.isInteger(Number(age)) || !['male', 'female'].includes(gender) || ![10, 20].includes(Number(term))) {
         return null;
     }
