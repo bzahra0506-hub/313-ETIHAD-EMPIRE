@@ -36,10 +36,13 @@
 
             <section class="couple-grid" aria-label="Sumbangan individu">
                 <div class="person-card">
-                    <h2>Lelaki</h2>
-                    <div class="person-total"><output id="male-premium" aria-label="Sumbangan bulanan lelaki">—</output><span>/ bulan</span></div>
+                    <div class="person-total">
+                        <h2>Lelaki</h2>
+                        <div class="person-amount"><output id="male-premium" aria-label="Sumbangan bulanan lelaki">—</output><span>/ bulan</span></div>
+                        <span class="person-age-caption" id="male-age-caption"></span>
+                    </div>
                     <div class="age-field">
-                        <label for="male-age">Umur</label>
+                        <label for="male-age">Umur Suami</label>
                         <div class="age-controls">
                             <button type="button" data-age-target="male-age" data-age-step="-1" aria-label="Kurangkan umur lelaki">−</button>
                             <select id="male-age" name="maleAge" required>
@@ -53,10 +56,13 @@
                     </div>
                 </div>
                 <div class="person-card">
-                    <h2>Wanita</h2>
-                    <div class="person-total"><output id="female-premium" aria-label="Sumbangan bulanan wanita">—</output><span>/ bulan</span></div>
+                    <div class="person-total">
+                        <h2>Wanita</h2>
+                        <div class="person-amount"><output id="female-premium" aria-label="Sumbangan bulanan wanita">—</output><span>/ bulan</span></div>
+                        <span class="person-age-caption" id="female-age-caption"></span>
+                    </div>
                     <div class="age-field">
-                        <label for="female-age">Umur</label>
+                        <label for="female-age">Umur Isteri</label>
                         <div class="age-controls">
                             <button type="button" data-age-target="female-age" data-age-step="-1" aria-label="Kurangkan umur wanita">−</button>
                             <select id="female-age" name="femaleAge" required>

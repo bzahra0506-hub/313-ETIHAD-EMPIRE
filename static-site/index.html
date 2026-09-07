@@ -61,15 +61,19 @@
 
             <section class="couple-grid" aria-label="Sumbangan individu">
                 <div class="person-card">
-                    <h2>Lelaki</h2>
-
                     <div class="person-total">
-                        <output id="male-premium">—</output>
-                        <span>/ bulan</span>
+                        <h2>Lelaki</h2>
+
+                        <div class="person-amount">
+                            <output id="male-premium">—</output>
+                            <span>/ bulan</span>
+                        </div>
+
+                        <span class="person-age-caption" id="male-age-caption"></span>
                     </div>
 
                     <div class="age-field">
-                        <label for="male-age">Umur</label>
+                        <label for="male-age">Umur Suami</label>
 
                         <div class="age-controls">
                             <button
@@ -92,15 +96,19 @@
                 </div>
 
                 <div class="person-card">
-                    <h2>Wanita</h2>
-
                     <div class="person-total">
-                        <output id="female-premium">—</output>
-                        <span>/ bulan</span>
+                        <h2>Wanita</h2>
+
+                        <div class="person-amount">
+                            <output id="female-premium">—</output>
+                            <span>/ bulan</span>
+                        </div>
+
+                        <span class="person-age-caption" id="female-age-caption"></span>
                     </div>
 
                     <div class="age-field">
-                        <label for="female-age">Umur</label>
+                        <label for="female-age">Umur Isteri</label>
 
                         <div class="age-controls">
                             <button
@@ -206,6 +214,6 @@
         </form>
     </main>
 
-    <script type="module" src="./app.js"></script>
+    <script src="./app.js" defer></script>
 </body>
 </html>

@@ -150,6 +150,8 @@ if (calculator) {
         animateAmount('#male-premium', malePremium);
         animateAmount('#female-premium', femalePremium);
         animateAmount('#couple-premium', malePremium === null || femalePremium === null ? null : (Math.round(malePremium * 100) + Math.round(femalePremium * 100)) / 100);
+        document.querySelector('#male-age-caption').textContent = maleAge.value === '' ? '' : `Umur: ${maleAge.value} tahun`;
+        document.querySelector('#female-age-caption').textContent = femaleAge.value === '' ? '' : `Umur: ${femaleAge.value} tahun`;
         document.querySelector('#term-badge').textContent = `${term} tahun`;
         document.querySelector('#age-hint').textContent = `Umur kemasukan: 17–${maximumAge} tahun untuk tempoh ${term} tahun.`;
         document.querySelector('#input-error').textContent = errors.join(' ');
