@@ -19,6 +19,8 @@ body { margin: 0; }
 button, input, select { font: inherit; }
 h1, h2, h3, p { margin: 0; }
 .workspace { width: min(100%, 820px); margin: 0 auto; padding: 28px 28px 24px; }
+.page-switch-link { display: block; text-align: center; margin-bottom: 20px; font-size: 13px; font-weight: 600; color: var(--gold); text-decoration: none; }
+.page-switch-link:hover { text-decoration: underline; }
 .calculator { display: flex; flex-direction: column; gap: 22px; }
 .term-field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .term-field legend { width: 100%; text-align: center; margin-bottom: 12px; font-size: 16px; color: var(--ink); }

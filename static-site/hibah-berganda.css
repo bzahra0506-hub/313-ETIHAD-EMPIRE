@@ -1,0 +1,621 @@
+:root {
+    color-scheme: light;
+    --ink: #16241f;
+    --muted: #5c6b66;
+    --border: #d9e5df;
+    --surface: #ffffff;
+    --page-start: #96c9ac;
+    --page-end: #a9b19a;
+    --accent: #0f8a5f;
+    --accent-dark: #0a5f42;
+    --accent-soft: #e3f7ee;
+    --gold: #b8860b;
+    --gold-dark: #8a6510;
+    --gold-soft: #f5dfa0;
+    --shadow: 0 10px 30px -12px rgba(15, 60, 45, 0.25);
+    --shadow-soft: 0 6px 18px -10px rgba(15, 60, 45, 0.18);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 12% 0%, rgba(15, 138, 95, 0.14), transparent 55%),
+        radial-gradient(circle at 100% 20%, rgba(201, 151, 31, 0.12), transparent 45%),
+        linear-gradient(180deg, var(--page-start), var(--page-end));
+    color: var(--ink);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.45;
+}
+
+.workspace {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 18px 56px;
+}
+
+.page-switch-link {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent-dark);
+    text-decoration: none;
+}
+
+.page-switch-link:hover {
+    text-decoration: underline;
+}
+
+@keyframes fade-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ambient-glow {
+    0%, 100% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.75;
+        transform: scale(1.04);
+    }
+}
+
+@keyframes amount-bump {
+    0% {
+        transform: scale(1);
+        color: var(--gold-dark);
+    }
+    35% {
+        transform: scale(1.08);
+        color: var(--accent-dark);
+    }
+    100% {
+        transform: scale(1);
+        color: var(--gold-dark);
+    }
+}
+
+@keyframes pulse-glow {
+    0% {
+        transform: scale(1);
+        box-shadow: var(--shadow);
+    }
+    40% {
+        transform: scale(1.015);
+        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.15), var(--shadow);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: var(--shadow);
+    }
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 24px;
+    animation: fade-slide-up 0.5s ease both;
+}
+
+.eyebrow {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: var(--gold-soft);
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.page-title {
+    font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+    font-size: clamp(2rem, 5vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+    background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.page-subtitle {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.benefit-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+@media (max-width: 600px) {
+    .benefit-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+.benefit-card,
+.reward-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    animation: fade-slide-up 0.5s ease both;
+    animation-delay: 0.08s;
+}
+
+.reward-card {
+    display: flex;
+    flex-direction: column;
+    animation-delay: 0.16s;
+}
+
+.card-watermark {
+    position: absolute;
+    right: -24px;
+    bottom: -24px;
+    width: 190px;
+    height: 190px;
+    color: var(--accent);
+    opacity: 0.07;
+    pointer-events: none;
+}
+
+.card-watermark svg {
+    width: 100%;
+    height: 100%;
+}
+
+.benefit-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+}
+
+.reward-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), #e7bb4d);
+}
+
+.benefit-card h2,
+.reward-card h2 {
+    margin: 0 0 16px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.benefit-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.benefit-list li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 2px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    border-left: 4px solid var(--gold);
+    background: var(--gold-soft);
+}
+
+.benefit-icon {
+    grid-row: 1 / 3;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--gold);
+    box-shadow: var(--shadow-soft);
+}
+
+.benefit-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+.benefit-text {
+    font-size: 0.78rem;
+    color: var(--muted);
+    align-self: end;
+}
+
+.benefit-list strong {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--surface);
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--gold-dark);
+    box-shadow: var(--shadow-soft);
+}
+
+.benefit-list li.bump strong {
+    animation: amount-bump 0.5s ease;
+}
+
+.benefit-note {
+    margin: 0 0 16px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent-dark);
+}
+
+.illness-block {
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--border);
+}
+
+.illness-block h3 {
+    margin: 0 0 16px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.illness-list {
+    margin: 0;
+    padding: 0 0 0 22px;
+    columns: 2;
+    column-gap: 28px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.5;
+}
+
+.illness-list li {
+    break-inside: avoid;
+    margin-bottom: 14px;
+}
+
+.illness-list li::marker {
+    color: var(--accent);
+    font-size: 1.2em;
+}
+
+.total-card {
+    position: relative;
+    z-index: 0;
+    padding: 16px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+    color: #fff;
+    box-shadow: var(--shadow);
+}
+
+.total-card::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--accent), var(--gold));
+    filter: blur(20px);
+    opacity: 0.35;
+    animation: ambient-glow 2.8s ease-in-out infinite;
+}
+
+.total-card.pulse {
+    animation: pulse-glow 0.6s ease-out;
+}
+
+.total-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 4px;
+}
+
+.total-amount {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.total-amount output {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.55);
+    transition: color 0.2s ease;
+}
+
+.total-amount output.has-amount {
+    color: #fff;
+}
+
+.total-amount span {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+}
+
+#total-caption {
+    margin: 4px 0 0;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.gender-field {
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 18px;
+    background: var(--surface);
+    box-shadow: var(--shadow-soft);
+    animation: fade-slide-up 0.5s ease both;
+    animation-delay: 0.22s;
+}
+
+.gender-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.gender-options label {
+    position: relative;
+    flex: 1;
+    min-width: 140px;
+}
+
+.gender-options input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    cursor: pointer;
+}
+
+.gender-options span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 20px;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--muted);
+    transition: transform 0.1s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.gender-options input:active + span {
+    transform: scale(0.96);
+}
+
+.gender-options span svg {
+    width: 22px;
+    height: 22px;
+}
+
+.gender-options input:hover + span {
+    border-color: var(--accent);
+    color: var(--accent-dark);
+}
+
+.gender-options input:checked + span {
+    background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+    border-color: var(--accent-dark);
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(15, 138, 95, 0.18), 0 0 18px rgba(15, 138, 95, 0.45), var(--shadow-soft);
+}
+
+.gender-options input:focus-visible + span {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.fields-row {
+    display: flex;
+    gap: 16px;
+    animation: fade-slide-up 0.5s ease both;
+    animation-delay: 0.28s;
+}
+
+@media (max-width: 560px) {
+    .fields-row {
+        flex-direction: column;
+    }
+}
+
+.coverage-field,
+.age-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 14px 16px;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.coverage-field:hover,
+.age-field:hover,
+.coverage-field:focus-within,
+.age-field:focus-within {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.coverage-field label,
+.age-field label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.coverage-field select {
+    padding: 11px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--accent-soft);
+    color: var(--accent-dark);
+}
+
+.age-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.age-controls select {
+    flex: 1;
+    padding: 11px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--surface);
+    color: var(--ink);
+}
+
+.age-controls button {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--accent-dark);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.1s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.age-controls button:hover:not(:disabled) {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+}
+
+.age-controls button:active:not(:disabled) {
+    transform: scale(0.92);
+}
+
+.age-controls button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.input-feedback {
+    font-size: 0.78rem;
+    color: var(--muted);
+    padding: 0 4px;
+}
+
+#input-error {
+    color: #c22f2f;
+    font-weight: 600;
+    margin: 4px 0 0;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.form-actions button {
+    padding: 12px 26px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: transform 0.1s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-actions button:hover {
+    border-color: var(--accent);
+    color: var(--accent-dark);
+    box-shadow: var(--shadow-soft);
+}
+
+.form-actions button:active {
+    transform: scale(0.96);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-header,
+    .benefit-card,
+    .reward-card,
+    .gender-field,
+    .fields-row,
+    .total-card.pulse,
+    .total-card::after,
+    .benefit-list li.bump strong {
+        animation: none !important;
+    }
+
+    .total-card::after {
+        opacity: 0.35;
+    }
+
+    .coverage-field,
+    .age-field,
+    .gender-options span,
+    .age-controls button,
+    .form-actions button {
+        transition: none !important;
+    }
+}
