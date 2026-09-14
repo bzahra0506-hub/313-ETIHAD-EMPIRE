@@ -230,6 +230,7 @@ body {
 }
 
 .benefit-list li {
+    position: relative;
     display: grid;
     grid-template-columns: 28px 1fr;
     grid-template-rows: auto auto;
@@ -240,6 +241,37 @@ body {
     border-radius: 12px;
     border-left: 4px solid var(--gold);
     background: var(--gold-soft);
+    overflow: hidden;
+}
+
+.benefit-list li::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+    transform: skewX(-20deg);
+    animation: shimmer 3.2s ease-in-out infinite;
+}
+
+.benefit-list li:nth-child(1)::after { animation-delay: 0s; }
+.benefit-list li:nth-child(2)::after { animation-delay: 0.3s; }
+.benefit-list li:nth-child(3)::after { animation-delay: 0.6s; }
+.benefit-list li:nth-child(4)::after { animation-delay: 0.9s; }
+.benefit-list li:nth-child(5)::after { animation-delay: 1.2s; }
+
+@keyframes shimmer {
+    0% {
+        left: -75%;
+    }
+    45% {
+        left: 130%;
+    }
+    100% {
+        left: 130%;
+    }
 }
 
 .benefit-icon {
@@ -606,8 +638,13 @@ body {
     .fields-row,
     .total-card.pulse,
     .total-card::after,
-    .benefit-list li.bump strong {
+    .benefit-list li.bump strong,
+    .benefit-list li::after {
         animation: none !important;
+    }
+
+    .benefit-list li::after {
+        display: none;
     }
 
     .total-card::after {
