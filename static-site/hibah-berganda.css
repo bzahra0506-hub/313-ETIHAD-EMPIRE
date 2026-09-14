@@ -11,7 +11,9 @@
     --accent-soft: #e3f7ee;
     --gold: #b8860b;
     --gold-dark: #8a6510;
-    --gold-soft: #f5dfa0;
+    --gold-soft: #ecc766;
+    --price-dark: #7a1220;
+    --price: #b5222f;
     --shadow: 0 10px 30px -12px rgba(15, 60, 45, 0.25);
     --shadow-soft: 0 6px 18px -10px rgba(15, 60, 45, 0.18);
 }
@@ -260,7 +262,8 @@ body {
 
 .benefit-text {
     font-size: 0.78rem;
-    color: var(--muted);
+    font-weight: 700;
+    color: #000;
     align-self: end;
 }
 
@@ -329,7 +332,7 @@ body {
     z-index: 0;
     padding: 16px;
     border-radius: 14px;
-    background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+    background: linear-gradient(135deg, var(--price-dark), var(--price));
     color: #fff;
     box-shadow: var(--shadow);
 }
@@ -340,7 +343,7 @@ body {
     inset: -8px;
     z-index: -1;
     border-radius: inherit;
-    background: linear-gradient(135deg, var(--accent), var(--gold));
+    background: linear-gradient(135deg, var(--price), var(--gold));
     filter: blur(20px);
     opacity: 0.35;
     animation: ambient-glow 2.8s ease-in-out infinite;
